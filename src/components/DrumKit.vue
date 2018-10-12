@@ -1,6 +1,6 @@
 <template>
   <div ref="drum" class="keys">
-    <div v-for="sound in sounds" :key="'sound' + sound.key" @click="playSound($event, sound)"
+    <div v-for="sound in sounds" :key="'sound' + sound.key" @mousedown="playSound($event, sound)"
       :data-key="sound.code" class="key" :class="{ playing: sound.playing }"
       @transitionend="removeTransition($event, sound)">
       <kbd>{{sound.key}}</kbd>
