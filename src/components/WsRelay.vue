@@ -52,7 +52,6 @@
       this.connect()
 
       this.$on('key:play', (data) => {
-        console.info('key:play', data)
         this.send(data.code)
       })
     }
