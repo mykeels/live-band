@@ -94,6 +94,7 @@ a {
   justify-content: center;
   background: #333;
   cursor: pointer;
+  padding-top: 20px;
 }
 
 .key {
