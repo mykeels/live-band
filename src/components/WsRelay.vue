@@ -22,7 +22,7 @@
     },
     methods: {
       connect () {
-        this.ws = new WebSocket('ws://localhost:8081')
+        this.ws = new WebSocket(process.env.WS_URL)
 
         this.ws.onerror = (err) => console.error(`ws:${ws.key}`, err)
         this.ws.onopen = () => {
