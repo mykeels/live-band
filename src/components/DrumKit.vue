@@ -39,7 +39,16 @@ export default {
         if (sound) sound.playing = true;
         audio.currentTime = 0;
         audio.play();
+        if (this.$parent) this.$parent.$emit('key:play', sound)
       }
+    },
+    playSoundWithoutEvent (code) {
+      const audio = (this.$refs[code] || [])[0];
+      if (!audio) return;
+      const sound = this.sounds.find(s => s.code == code)
+      if (sound) sound.playing = true;
+      audio.currentTime = 0;
+      audio.play();
     },
     removeTransition(e, sound) {
       if (e.propertyName !== 'transform') return;
@@ -48,6 +57,11 @@ export default {
   },
   mounted () {
     document.addEventListener('keydown', this.playSound.bind(this))
+    if (this.$parent) {
+      this.$parent.$on('ws:key:play', code => {
+        this.playSoundWithoutEvent(code)
+      })
+    }
   }
 }
 </script>

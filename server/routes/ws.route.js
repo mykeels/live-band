@@ -43,7 +43,7 @@ module.exports = (app) => {
           })
 
           ws.on('close', () => {
-            sockets.splice(sockets.findIndex(ws), 1)
+            sockets.splice(sockets.findIndex(socket => socket == ws), 1)
           })
         }
         catch (ex) {
