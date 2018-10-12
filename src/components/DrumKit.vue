@@ -1,8 +1,7 @@
 <template>
   <div ref="drum" class="keys">
     <div v-for="sound in sounds" :key="'sound' + sound.key" @mousedown="playSound($event, sound)"
-      :data-key="sound.code" class="key" :class="{ playing: sound.playing }"
-      @transitionend="removeTransition($event, sound)">
+      :data-key="sound.code" class="key" :class="{ playing: sound.playing }">
       <kbd>{{sound.key}}</kbd>
       <span class="sound">{{sound.name}}</span>
     </div>
@@ -49,10 +48,6 @@ export default {
       if (sound) sound.playing = true;
       audio.currentTime = 0;
       audio.play();
-    },
-    removeTransition(e, sound) {
-      if (e.propertyName !== 'transform') return;
-      sound.playing = false
     }
   },
   mounted () {
@@ -62,6 +57,14 @@ export default {
         this.playSoundWithoutEvent(code)
       })
     }
+    this.sounds.forEach(sound => {
+      const audio = (this.$refs[sound.code] || [])[0];
+      if (audio) {
+        audio.onended = function (e) {
+          sound.playing = false
+        }
+      }
+    })
   }
 }
 </script>
@@ -106,11 +109,11 @@ a {
 .key {
   border:4px solid black;
   border-radius:5px;
-  margin:0.3rem;
+  margin:0.4rem;
   font-size: 1.5rem;
   padding:1rem .5rem;
   transition:all .07s;
-  width:30%;
+  width:35%;
   text-align: center;
   color:white;
   background:rgba(0,0,0,0.4);
