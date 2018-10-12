@@ -33,7 +33,6 @@
           setTimeout(this.connect, 2000)
         }
         this.ws.onmessage = (message) => {
-          console.log('ws:message', message)
           if (Number(message.data)) {
             this.$emit('ws:key:play', Number(message.data))
           }
