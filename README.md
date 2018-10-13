@@ -1,6 +1,11 @@
-# live-band
+# Live Band
 
-> A Vue.js project
+> Play instruments with the rest of the world
+
+## Credits
+
+- [WesBos's JavaScript30](https://javascript30.com)
+- [CSS Deck Piano](http://cssdeck.com/labs/pure-css3-piano)
 
 ## Build Setup
 
