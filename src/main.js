@@ -3,14 +3,6 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import Vue2Touch from 'vue2-touch'
-
-Vue.use(Vue2Touch, {
-  gestures: ['swipe'],
-  directions: {
-    swipe: ['swipeup']
-  }
-})
 
 Vue.config.productionTip = false
 

@@ -1,11 +1,12 @@
 <template>
-  <div v-touch:swipe="changeInstrument">
+  <div>
     <WsRelay>
       <template>
         <DrumKit :is-active="activeInstrument === 0"></DrumKit>
         <Piano :is-active="activeInstrument === 1"></Piano>
       </template>
     </WsRelay>
+    <BottomMenu :inactive-items="[ instruments[activeInstrument] ]" :click-handler="switchView"></BottomMenu>
   </div>
 </template>
 
@@ -13,12 +14,14 @@
   import DrumKit from './DrumKit'
   import Piano from './Piano'
   import WsRelay from './WsRelay'
+  import BottomMenu from './BottomMenu'
 
   export default {
     components: {
       WsRelay,
       DrumKit,
-      Piano
+      Piano,
+      BottomMenu
     },
     data () {
       return {
@@ -27,9 +30,12 @@
       }
     },
     methods: {
-      changeInstrument (e) {
-        if (e == 'swipeup') {
-          this.activeInstrument = (this.activeInstrument + 1) % this.instruments.length
+      switchView (action) {
+        if (action == 'jam') {
+
+        }
+        else {
+          this.activeInstrument = this.instruments.findIndex(item => item == action) || 0
         }
       }
     }
