@@ -38,7 +38,7 @@ export default {
         if (sound) sound.playing = true;
         audio.currentTime = 0;
         audio.play();
-        if (this.$parent) this.$parent.$emit('key:play', sound)
+        if (this.$parent) this.$parent.$emit('key:play', { instrument: 'drumkit', ...sound })
       }
     },
     playSoundWithoutEvent (code) {
@@ -53,8 +53,8 @@ export default {
   mounted () {
     document.addEventListener('keydown', this.playSound.bind(this))
     if (this.$parent) {
-      this.$parent.$on('ws:key:play', code => {
-        this.playSoundWithoutEvent(code)
+      this.$parent.$on('ws:key:play', data => {
+        if (data.instrument == 'drumkit') this.playSoundWithoutEvent(data.code)
       })
     }
     this.sounds.forEach(sound => {

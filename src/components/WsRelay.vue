@@ -33,8 +33,13 @@
           setTimeout(this.connect, 2000)
         }
         this.ws.onmessage = (message) => {
-          if (Number(message.data)) {
-            this.$emit('ws:key:play', Number(message.data))
+          try {
+            if (message.data) {
+              this.$emit('ws:key:play', JSON.parse(message.data))
+            }
+          }
+          catch (err) {
+
           }
         }
 
@@ -52,7 +57,7 @@
       this.connect()
 
       this.$on('key:play', (data) => {
-        this.send(data.code)
+        this.send(JSON.stringify({ instrument: data.instrument, code: data.code }))
       })
     }
   }

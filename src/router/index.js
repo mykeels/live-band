@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import SyncedDrumKit from '@/components/SyncedDrumKit'
-import Piano from '@/components/Piano'
+import Band from '@/components/Band'
 
 Vue.use(Router)
 
@@ -10,17 +9,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: SyncedDrumKit
-    },
-    {
-      path: '/drums',
-      name: 'drums',
-      component: SyncedDrumKit
-    },
-    {
-      path: '/piano',
-      name: 'piano',
-      component: Piano
+      component: Band
     }
   ]
 })

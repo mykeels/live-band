@@ -173,8 +173,17 @@
           if (sound) sound.playing = true;
           audio.currentTime = 0;
           audio.play();
-          if (this.$parent) this.$parent.$emit('key:play', sound)
+          if (this.$parent) this.$parent.$emit('key:play', { instrument: 'piano', code: sound.key })
         }
+      },
+      playSoundWithoutEvent(key) {
+        const sound = this.keySounds[key]
+        if (!sound) return;
+        const audio = (this.$refs[sound.key] || [])[0];
+        if (!audio) return;
+        sound.playing = true;
+        audio.currentTime = 0;
+        audio.play();
       },
       playBlackKey ($event, collection, index) {
         return this.playSound($event, collection[index + 1])
@@ -196,6 +205,11 @@
     },
     mounted () {
       document.addEventListener('keydown', this.handleKey.bind(this))
+      if (this.$parent) {
+        this.$parent.$on('ws:key:play', data => {
+          if (data.instrument == 'piano') this.playSoundWithoutEvent(data.code)
+        })
+      }
       this.sounds.reduce((arr, collection) => arr.concat(collection), []).forEach(sound => {
         const audio = (this.$refs[sound.key] || [])[0];
         if (audio) {
