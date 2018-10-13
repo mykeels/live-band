@@ -1,5 +1,5 @@
 <template>
-  <div id="p-wrapper">
+  <div v-show="isActive" id="p-wrapper">
     <ul>
       <li class="octave" :class="`octave-${index + 3} ${index == activeOctave && 'active'}`" v-for="(collection, index) in sounds" :key="index">
         <ul class="piano">
@@ -31,6 +31,12 @@
   }
 
   export default {
+    props: {
+      isActive: {
+        type: Boolean,
+        default: true
+      }
+    },
     data () {
       return {
         activeOctave: 1,
@@ -164,7 +170,7 @@
         if (e.buttons) fn()
       },
       playSound(e, sound) {
-        if (e) {
+        if (e && this.isActive) {
           const code = sound ? sound.code : e.key
           const sounds = this.sounds[this.activeOctave]
           sound = sound || sounds.find(s => s.code == code)

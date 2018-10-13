@@ -1,5 +1,5 @@
 <template>
-  <div ref="drum" class="keys">
+  <div v-show="isActive" ref="drum" class="keys">
     <div v-for="sound in sounds" :key="'sound' + sound.key" @mousedown="playSound($event, sound)"
       :data-key="sound.code" class="key" :class="{ playing: sound.playing }">
       <kbd>{{sound.key}}</kbd>
@@ -12,6 +12,12 @@
 <script>
 export default {
   name: 'HelloWorld',
+  props: {
+    isActive: {
+      type: Boolean,
+      default: true
+    }
+  },
   data () {
     return {
       sounds: [
@@ -29,7 +35,7 @@ export default {
   },
   methods: {
     playSound(e, sound) {
-      if (e) {
+      if (e && this.isActive) {
         const code = sound ? sound.code : e.keyCode
         const audio = (this.$refs[code] || [])[0];
         const key = this.$refs.drum.querySelector(`div[data-key="${code}"]`);

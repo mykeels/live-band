@@ -2,8 +2,8 @@
   <div v-touch:swipe="changeInstrument">
     <WsRelay>
       <template>
-        <DrumKit v-show="activeInstrument === 0"></DrumKit>
-        <Piano v-show="activeInstrument === 1"></Piano>
+        <DrumKit :is-active="activeInstrument === 0"></DrumKit>
+        <Piano :is-active="activeInstrument === 1"></Piano>
       </template>
     </WsRelay>
   </div>
