@@ -1,10 +1,12 @@
 <template>
-  <WsRelay>
-    <template>
-      <DrumKit></DrumKit>
-      <Piano></Piano>
-    </template>
-  </WsRelay>
+  <div v-touch:swipe="changeInstrument">
+    <WsRelay>
+      <template>
+        <DrumKit v-show="activeInstrument === 0"></DrumKit>
+        <Piano v-show="activeInstrument === 1"></Piano>
+      </template>
+    </WsRelay>
+  </div>
 </template>
 
 <script>
@@ -20,7 +22,15 @@
     },
     data () {
       return {
-        activeInstrument: 'drumkit'
+        instruments: [ 'drumkit', 'piano' ],
+        activeInstrument: 0
+      }
+    },
+    methods: {
+      changeInstrument (e) {
+        if (e == 'swipeup') {
+          this.activeInstrument = (this.activeInstrument + 1) % this.instruments.length
+        }
       }
     }
   }
