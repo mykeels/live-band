@@ -15,15 +15,15 @@ export default {
   data () {
     return {
       sounds: [
-        { key: 'A', code: 65, playing: false, name: 'clap', file: './static/sounds/clap.wav' },
-        { key: 'S', code: 83, playing: false, name: 'hihat', file: './static/sounds/hihat.wav' },
-        { key: 'D', code: 68, playing: false, name: 'kick', file: './static/sounds/kick.wav' },
-        { key: 'F', code: 70, playing: false, name: 'openhat', file: './static/sounds/openhat.wav' },
-        { key: 'G', code: 71, playing: false, name: 'boom', file: './static/sounds/boom.wav' },
-        { key: 'H', code: 72, playing: false, name: 'ride', file: './static/sounds/ride.wav' },
-        { key: 'J', code: 74, playing: false, name: 'snare', file: './static/sounds/snare.wav' },
-        { key: 'K', code: 75, playing: false, name: 'tom', file: './static/sounds/tom.wav' },
-        { key: 'L', code: 76, playing: false, name: 'tink', file: './static/sounds/tink.wav' }
+        { key: 'A', code: 65, playing: false, name: 'clap', file: './static/sounds/drums/clap.wav' },
+        { key: 'S', code: 83, playing: false, name: 'hihat', file: './static/sounds/drums/hihat.wav' },
+        { key: 'D', code: 68, playing: false, name: 'kick', file: './static/sounds/drums/kick.wav' },
+        { key: 'F', code: 70, playing: false, name: 'openhat', file: './static/sounds/drums/openhat.wav' },
+        { key: 'G', code: 71, playing: false, name: 'boom', file: './static/sounds/drums/boom.wav' },
+        { key: 'H', code: 72, playing: false, name: 'ride', file: './static/sounds/drums/ride.wav' },
+        { key: 'J', code: 74, playing: false, name: 'snare', file: './static/sounds/drums/snare.wav' },
+        { key: 'K', code: 75, playing: false, name: 'tom', file: './static/sounds/drums/tom.wav' },
+        { key: 'L', code: 76, playing: false, name: 'tink', file: './static/sounds/drums/tink.wav' }
       ]
     }
   },
