@@ -6,7 +6,9 @@
         <Piano :is-active="activeInstrument === 1"></Piano>
       </template>
     </WsRelay>
-    <BottomMenu :inactive-items="[ instruments[activeInstrument] ]" :click-handler="switchView"></BottomMenu>
+    <BottomMenu :inactive-items="[ instruments[activeInstrument] ]"
+      :active="instruments[activeInstrument]"
+      :click-handler="switchView"></BottomMenu>
   </div>
 </template>
 

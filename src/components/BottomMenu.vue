@@ -1,17 +1,19 @@
 <template>
   <div class="menu">
-    <div class="menu-item" :class="{ inactive: inactiveItems.includes('piano') }" @click="clickHandler('piano')">
-      <kbd>Piano</kbd>
-      <span class="sound">Piano</span>
-    </div>
-    <div class="menu-item" :class="{ inactive: inactiveItems.includes('drumkit') }" @click="clickHandler('drumkit')">
+    <div class="menu-item" :class="{ active: active == 'drumkit' }"
+      @click="clickHandler('drumkit')">
       <kbd>Drums</kbd>
       <span class="sound">Drums</span>
     </div>
-    <div class="menu-item inactive" @click="clickHandler('jam')">
+    <div class="menu-item" :class="{ active: active == 'piano' }"
+      @click="clickHandler('piano')">
+      <kbd>Piano</kbd>
+      <span class="sound">Piano</span>
+    </div>
+    <!-- <div class="menu-item inactive" @click="clickHandler('jam')">
       <kbd>Jam</kbd>
       <span class="sound">Jam</span>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -26,6 +28,9 @@ export default {
     inactiveItems: {
       type: Array,
       default: []
+    },
+    active: {
+      type: String
     }
   },
   data () {
@@ -64,7 +69,6 @@ export default {
     align-items: center;
     justify-content: center;
     background: #333;
-    cursor: pointer;
     padding-top: 20px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -81,16 +85,21 @@ export default {
     font-size: 1.5rem;
     padding:1rem .5rem;
     transition:all .07s;
-    width:22%;
+    width:25%;
     text-align: center;
     color:white;
     background:rgba(0,0,0,0.4);
     text-shadow:0 0 5px black;
     display: inline-block;
+    cursor: pointer;
   }
 
-  .menu-item.inactive {
+  .menu-item.greyed {
     opacity: 0.4;
+  }
+
+  .menu-item.active {
+    border-color: white;
   }
 
   .playing {

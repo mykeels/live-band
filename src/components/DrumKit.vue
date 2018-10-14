@@ -98,11 +98,9 @@ a {
 }
 
 .keys {
-  min-height:100vh;
   align-items: center;
   justify-content: center;
   background: #333;
-  cursor: pointer;
   padding-top: 20px;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -125,6 +123,7 @@ a {
   background:rgba(0,0,0,0.4);
   text-shadow:0 0 5px black;
   display: inline-block;
+  cursor: pointer;
 }
 
 .playing {
