@@ -37,9 +37,13 @@
 
         }
         else {
+          this.$ga.screenview(action)
           this.activeInstrument = this.instruments.findIndex(item => item == action) || 0
         }
       }
+    },
+    mounted () {
+      this.$ga.screenview('drumkit')
     }
   }
 </script>
