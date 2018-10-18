@@ -6,12 +6,14 @@
           <li v-for="(sound, soundIndex) in collection" :key="soundIndex">
             <div class="anchor" v-if="sound.key.length < 3" :class="{ active: sound.playing }"
               @mouseover="isMouseDown($event, () => playSound($event, sound))"
-              @mousedown="playSound($event, sound)">
+              @mousedown="playSound($event, sound)"
+              v-ga="$ga.commands.trackClick.bind($ga, 'piano', sound.key)">
               {{ sound.key.toUpperCase() }}
             </div>
             <span v-if="sound.sharp" :class="{ active: keySounds[sound.sharp].playing }"
               @mouseover="isMouseDown($event, () => playSound($event, keySounds[sound.sharp]))"
-              @mousedown="playSound($event, keySounds[sound.sharp])">
+              @mousedown="playSound($event, keySounds[sound.sharp])"
+              v-ga="$ga.commands.trackClick.bind($ga, 'piano', keySounds[sound.sharp].key)">
               {{ keySounds[sound.sharp].key }}
             </span>
           </li>

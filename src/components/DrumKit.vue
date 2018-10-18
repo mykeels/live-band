@@ -1,7 +1,8 @@
 <template>
   <div v-show="isActive" ref="drum" class="keys">
     <div v-for="sound in sounds" :key="'sound' + sound.key" @mousedown="playSound($event, sound)"
-      :data-key="sound.code" class="key" :class="{ playing: sound.playing }">
+      :data-key="sound.code" class="key" :class="{ playing: sound.playing }"
+      v-ga="$ga.commands.trackClick.bind($ga, 'drumkit', sound.name)">
       <kbd>{{sound.key}}</kbd>
       <span class="sound">{{sound.name}}</span>
     </div>
